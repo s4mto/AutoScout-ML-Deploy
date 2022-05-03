@@ -7,6 +7,10 @@ Created on Wed Apr 20 19:37:58 2022
 """
 
 import pandas as pd
+
+
+
+
 #from sklearn.preprocessing import MinMaxScaler
 
 def preprocess(df, option):
@@ -14,25 +18,16 @@ def preprocess(df, option):
     This function is to cover all the preprocessing steps on the churn dataframe. It involves selecting important features, encoding categorical data, handling missing values,feature scaling and splitting the data
     """
     #Defining the map function
-    def binary_map(feature):
-        return feature.map({'Yes':1, 'No':0})
 
 
     
     #Drop values based on operational options
     if (option == "Online"):
         # Encode binary categorical features
-        binary_list = ['full_service_history_Yes']
-
-        
-        df[binary_list] = df[binary_list].apply(binary_map)
-
-
-
-        columns = ['full_service_history_Yes']
         #Encoding the other categorical categoric features with more than two categories
-        df = pd.get_dummies(df).reindex(columns=columns, fill_value=0)
         #print(df.head())
+        pass
+                    
     else:
         print("Incorrect operational options")
 
@@ -406,4 +401,4 @@ make_model_dict = {'Audi-A1': 0,
  'Volvo-XC70': 359,
  'Volvo-XC90': 360}
 
-n_dict = {'2': 2,'3': 3,'4': 4,'5': 5,'6': 6,'7': 7,'8': 8,'9': 9}
+n_dict = {'1' : 1,'2': 2,'3': 3,'4': 4,'5': 5,'6': 6,'7': 7,'8': 8,'9': 9}
